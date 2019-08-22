@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Territorios
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content >
+  <ion-searchbar [(ngModel)] = "text" (ionChange)="searchTerritorio($event)"></ion-searchbar>
+
+  <ion-list lines="none">
+    <ion-item-sliding buttom *ngFor="let territorio of (results | async)" [routerLink]="['/', 'detalles', territorio.id]">
+      <!-- <ion-icon name="pin" color="tertiary" slot="start"></ion-icon> -->
+      <!-- <ion-avatar slot="start">
+        <img [src]="territorio.imagen" width="20">
+      </ion-avatar> -->
+      <ion-item>
+        <ion-thumbnail side="start" >
+          <img [src]="territorio.imagen">
+        </ion-thumbnail>
+        <ion-label padding>
+          <h2>{{ territorio.localidad }}</h2>
+          <h1><strong>{{ territorio.numero }}</strong></h1>
+        </ion-label>
+        <ion-badge slot="end" *ngIf="territorio.estado.estado === 'TERMINADO'" color="success">{{territorio.estado.estado}}</ion-badge>
+        <ion-badge slot="end" *ngIf="territorio.estado.estado === 'PENDIENTE'" color="secondary">{{territorio.estado.estado}}</ion-badge>
+        <ion-badge slot="end" *ngIf="territorio.estado.estado === 'INCOMPLETO'" color="danger">{{territorio.estado.estado}}</ion-badge>
+      </ion-item>
+    </ion-item-sliding>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,34 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Login</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-content>
+    <ion-grid>
+      <ion-row>
+        <ion-col text-center>
+          <br><br><br>
+            <img src="assets/icon/loginLogo.png" alt="" width="180">
+            <form>
+              <br>
+              <ion-item>
+                <ion-label position="floating">Codigo</ion-label>
+                <ion-input [(ngModel)]="loginInput.codigo" name="codigo" type="text" autocomplete="off" autocorrect="off"></ion-input>
+              </ion-item>
+              <br>
+              <ion-item>
+                <ion-label position="floating">Contraseña</ion-label>
+                <ion-input [(ngModel)]="loginInput.password" name="contrasenia" type="password" autocomplete="off" autocorrect="off"></ion-input>
+              </ion-item>
+              <br>
+              <br>
+              <ion-button [disabled]="loginInput.codigo.length === 0 || loginInput.password.length === 0" padding round expand="block" (click)="login()">ENTRAR</ion-button>
+            </form>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+  
+</ion-content>

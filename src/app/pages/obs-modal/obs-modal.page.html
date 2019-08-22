@@ -1,0 +1,23 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Detalles</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col text-center>
+        <br>
+          <form>
+            <ion-item>
+              <ion-label position="floating">Nombre Conductor</ion-label>
+              <ion-input [(ngModel)]="nombre" name="codigo" type="text" autocomplete="off" autocorrect="off"></ion-input>
+            </ion-item>
+            <br>
+            <ion-button [disabled]="nombre.length === 0" padding round expand="block" (click)="login()">GUARDAR</ion-button>
+          </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

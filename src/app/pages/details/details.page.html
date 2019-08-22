@@ -1,0 +1,95 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button [routerLink]="['/inicio/tabs/tab2']"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Territorio</ion-title>
+    <ion-button slot="end" color="success">
+      editar
+    </ion-button>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-card *ngIf="content">
+    <ion-card-header text-center> 
+      <ion-card-title>{{content.localidad}}</ion-card-title>
+      <ion-card-title><strong>{{content.numero}}</strong></ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+      <!-- <img src="{{image.imagen}}" clas="info-img" alt=""> -->
+      <img [src]="content.imagen" class="info-img" alt="" height="250" width="auto" tappable (click)="openPreview(content.imagen)">
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header> 
+      <ion-card-subtitle>Manzanas</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content padding>
+      <!-- <ion-list>
+        <ion-item buttom *ngFor="let manzana of (results | async)">
+          <ion-icon name="pin" color="primary" slot="start"></ion-icon>
+          <ion-label text-wrap>
+            <h2><strong>{{manzana.letra | uppercase}}</strong></h2>
+          </ion-label>
+          <ion-checkbox *ngIf="manzana.estado === 0" checked="false" disabled="true" color="success" slot="end"></ion-checkbox>
+          <ion-checkbox *ngIf="manzana.estado === 1" checked="true" disabled="true" color="success" slot="end"></ion-checkbox>
+        </ion-item>
+      </ion-list> -->
+      <ion-item>
+        <ion-label>Seleccionar</ion-label>
+        <ionic-selectable
+        item-content
+        #selectComponent
+        [(ngModel)]="selected" [items]="manzanas"
+        itemValueField="id" itemTextField="letra"
+        [isMultiple]="true" headerColor="primary"
+        searchFailText="No hay Registros"
+        [isEnabled]="true">
+   
+        <ng-template ionicSelectableCloseButtonTemplate>
+          <ion-icon name="close-circle"></ion-icon>
+        </ng-template>
+   
+        <ng-template ionicSelectableTitleTemplate>
+            Manzanas
+          </ng-template>
+          
+          <ng-template ionicSelectableItemTemplate let-manzana="item">
+              <strong>{{ manzana.letra | uppercase}}</strong> &nbsp;&nbsp;&nbsp;&nbsp;(Territorio: {{ content.numero }} &nbsp; {{ content.localidad }})
+          </ng-template>
+   
+          <ng-template ionicSelectableFooterTemplate>
+              <ion-footer>
+                  <ion-item>
+                      <ion-label position="floating">Nombre conductor</ion-label>
+                      <ion-input [(ngModel)]="registro.conductor" name="conductor" type="text"></ion-input>
+                    </ion-item> 
+                <ion-toolbar>
+                  <ion-row text-center>
+                    <!-- <ion-col size="4">
+                      <ion-button fill="clear" (click)="clear()">Deshabilitar todos</ion-button>
+                    </ion-col> -->
+                    <ion-col size="6">
+                      <ion-button fill="clear" (click)="toggleItems()">Seleccionar todos</ion-button>
+                    </ion-col>
+                    <ion-col size="6">
+                      <ion-button [disabled]="registro.conductor.length === 0" fill="clear" (click)="confirm()">Confirmar</ion-button>
+                    </ion-col>
+                  </ion-row>
+                </ion-toolbar>
+              </ion-footer>
+            </ng-template>
+   
+        </ionic-selectable>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-header> 
+      <ion-card-subtitle>Observaciones</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>

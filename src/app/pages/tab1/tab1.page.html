@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>
+      Inicio
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <ion-card class="welcome-card" *ngIf="congregacion">
+      <img [src]="congregacion.imagen" class="info-img" alt="" height="230" width="auto" tappable (click)="openPreview(congregacion.imagen)">
+      <ion-card-header>
+        <ion-card-subtitle>Congregacion</ion-card-subtitle>
+        <br>
+        <ion-card-title>{{congregacion.nombre}}</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
+        <p><strong>Detalles</strong></p>
+        <br>
+        <ion-label>Codigo de Congregacion: <strong>{{congregacion.codigo}}</strong></ion-label>
+        <br>
+        <ion-label>Circuito: <strong>{{congregacion.circuito}}</strong></ion-label>
+        <br>
+        <ion-label>Numero de Publicadores: <strong>{{congregacion.publicadores}}</strong></ion-label>
+        <br>
+        <ion-label>Cantidad de Territorios: <strong>{{congregacion.territorios}}</strong></ion-label>
+      </ion-card-content>
+    </ion-card>
+    <ion-list lines="none">
+      <ion-list-header>
+        <ion-label>Recursos</ion-label>
+      </ion-list-header>
+      <ion-item href="https://apps.jw.org/ui/S/donate-home.html#/donate">
+        <ion-icon slot="start" color="medium" name="cash"></ion-icon>
+        <ion-label>Donaciones JW</ion-label>
+      </ion-item>
+      <!-- <ion-item href="https://ionicframework.com/docs/building/scaffolding">
+        <ion-icon slot="start" color="medium" name="build"></ion-icon>
+        <ion-label>Scaffold Out Your App</ion-label>
+      </ion-item> -->
+    </ion-list>
+</ion-content>
